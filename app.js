@@ -318,8 +318,13 @@ const raf = window.requestAnimationFrame.bind(window);
     submitBtn.disabled = true;
     sendText.textContent = 'Sending…';
 
-    /* Simulate async send (replace with real API call) */
-    await new Promise(resolve => setTimeout(resolve, 1400));
+    /* Simulate async processing before mailto */
+    await new Promise(resolve => setTimeout(resolve, 800));
+
+    /* Open mail client */
+    const subject = encodeURIComponent(`Portfolio Contact: New message from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:fburakogretici@gmail.com?subject=${subject}&body=${body}`;
 
     /* Success state */
     form.style.opacity = '0';
@@ -404,7 +409,13 @@ const raf = window.requestAnimationFrame.bind(window);
       formEmailPl: "you@example.com",
       formMsgPl: "Tell me about your project or idea...",
       formSubmit: "Send Message",
-      footerMade: "Crafted with <span class=\"footer-heart\" aria-label=\"love\">♥</span> & clean code."
+      footerMade: "Crafted with <span class=\"footer-heart\" aria-label=\"love\">♥</span> & clean code.",
+      footerTagline: "Building elegant systems — one commit at a time.",
+      fnlHome: "Home",
+      fnlAbout: "About",
+      fnlProjects: "Projects",
+      fnlContact: "Contact",
+      footerCopy: "&copy; <span id=\"footer-year\"></span> Burak Öğretici. All rights reserved."
     },
     tr: {
       navHome: "Ana Sayfa",
@@ -464,7 +475,13 @@ const raf = window.requestAnimationFrame.bind(window);
       formEmailPl: "siz@ornek.com",
       formMsgPl: "Projenizden veya fikrinizden bahsedin...",
       formSubmit: "Mesaj Gönder",
-      footerMade: "<span class=\"footer-heart\" aria-label=\"love\">♥</span> ve temiz kod ile hazırlandı."
+      footerMade: "<span class=\"footer-heart\" aria-label=\"love\">♥</span> ve temiz kod ile hazırlandı.",
+      footerTagline: "Zarif sistemler inşa ediyorum — her defasında bir commit ile.",
+      fnlHome: "Ana Sayfa",
+      fnlAbout: "Hakkımda",
+      fnlProjects: "Projeler",
+      fnlContact: "İletişim",
+      footerCopy: "&copy; <span id=\"footer-year\"></span> Burak Öğretici. Tüm hakları saklıdır."
     }
   };
 
@@ -527,7 +544,13 @@ const raf = window.requestAnimationFrame.bind(window);
     formEmailPl: '#field-email',
     formMsgPl: '#field-message',
     formSubmit: '#contact-form button[type="submit"] span.btn-text',
-    footerMade: '.footer-made'
+    footerMade: '.footer-made',
+    footerTagline: '.footer-tagline',
+    fnlHome: '#fnl-home',
+    fnlAbout: '#fnl-about',
+    fnlProjects: '#fnl-projects',
+    fnlContact: '#fnl-contact',
+    footerCopy: '.footer-copy'
   };
 
   const btnTr = document.getElementById('lang-tr');
@@ -561,6 +584,11 @@ const raf = window.requestAnimationFrame.bind(window);
           el.placeholder = dict[dictKey];
         } else {
           el.innerHTML = dict[dictKey];
+          // Re-init dynamic year if footerCopy is updated
+          if (dictKey === 'footerCopy') {
+            const yearEl = document.getElementById('footer-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+          }
         }
       }
     }
