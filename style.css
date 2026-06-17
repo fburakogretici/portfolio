@@ -294,19 +294,25 @@ ul { list-style: none; }
 /* Name */
 .hero-name {
   font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   display: flex;
-  flex-direction: column;
-  gap: 0.1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
   animation: fadeSlideUp 0.9s var(--ease-out) 0.15s both;
 }
 .name-line {
-  display: block;
+  display: inline-block;
   color: var(--text-primary);
 }
+#name-line-1 {
+  font-weight: 300;
+}
 .name-accent {
+  font-weight: 900;
   background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
