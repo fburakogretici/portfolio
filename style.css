@@ -1698,7 +1698,7 @@ a.cdi-value:hover { color: var(--neon-blue); }
 }
 
 /* Success message */
-.form-success {
+.form-success:not([hidden]) {
   display: flex;
   align-items: center;
   gap: 0.75rem;
