@@ -340,3 +340,146 @@ const raf = window.requestAnimationFrame.bind(window);
   const yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
+
+/* ============================================
+   6. I18N (LANGUAGE SWITCHER)
+   ============================================ */
+(function initI18n() {
+  const translations = {
+    en: {
+      navHome: "Home",
+      navAbout: "About",
+      navProjects: "Projects",
+      navContact: "Contact",
+      heroBadge: "<span class=\"badge-dot\" aria-hidden=\"true\"></span> Available for new opportunities",
+      heroTitle: "Full Stack Developer",
+      heroDesc: "Solving complex problems with elegant code; building scalable SaaS platforms, automation systems, and end-to-end digital solutions.",
+      btnProjects: "View Projects",
+      btnContact: "Contact Me",
+      aboutEyebrow: "About & Expertise",
+      aboutP1: "With a strong foundation in both software architecture and business processes, backed by a high-honors degree in Management Information Systems (MIS).",
+      aboutP2: "This includes <strong>Hospital Information Management Systems (HBYS)</strong> — mission-critical healthcare infrastructure — alongside complex, multi-party <strong>API integration platforms</strong> that connect fragmented enterprise ecosystems into seamless, automated pipelines.",
+      aboutP3: "My work sits at the intersection of software architecture, process automation, and AI — turning operational complexity into clean, maintainable solutions that scale with the business.",
+      techHeading: "Tech Stack & Toolbox",
+      groupTitleBackend: "Backend & Database",
+      groupSubBackend: "Server logic, data persistence & query optimization",
+      projEyebrow: "Featured Work",
+      projHeading: "Projects that <span class=\"heading-accent\">Ship</span>",
+      projNoCodeDesc: "A modern, full-featured website builder and SaaS platform that empowers anyone to create, publish, and scale professional web pages — without writing a single line of code. Built with a sharp focus on UX, performance, and scalability.",
+      projAuroxDesc: "End-to-end digital solutions designed to digitalize and streamline operational processes for businesses. From bespoke software development to automation pipelines, Aurox bridges the gap between business complexity and elegant, efficient systems.",
+      projACEDesc: "A fully autonomous, end-to-end video and content production workflow that operates with <strong>zero human intervention</strong>. Powered by n8n orchestration and Generative AI, it researches topics, writes scripts, generates visuals, edits, and publishes — on its own schedule.",
+      contactEyebrow: "Contact",
+      contactHeading: "Let's Build Something <span class=\"heading-accent\">Great</span>",
+      contactDesc: "I'm currently open for new projects and collaborations. Whether you have a specific idea in mind or just want to explore possibilities, I'd love to hear from you.",
+      formName: "Name",
+      formEmail: "Email Address",
+      formMsg: "Your Message",
+      formSubmit: "Send Message",
+      footerMade: "Crafted with <span class=\"footer-heart\" aria-label=\"love\">♥</span> & clean code."
+    },
+    tr: {
+      navHome: "Ana Sayfa",
+      navAbout: "Hakkımda",
+      navProjects: "Projeler",
+      navContact: "İletişim",
+      heroBadge: "<span class=\"badge-dot\" aria-hidden=\"true\"></span> Yeni fırsatlara açık",
+      heroTitle: "Full Stack Geliştirici",
+      heroDesc: "Zarif kodlarla karmaşık sorunları çözüyor; ölçeklenebilir SaaS platformları, otomasyon sistemleri ve uçtan uca dijital çözümler üretiyorum.",
+      btnProjects: "Projeleri İncele",
+      btnContact: "Benimle İletişime Geç",
+      aboutEyebrow: "Hakkımda & Uzmanlık",
+      aboutP1: "Yönetim Bilişim Sistemleri (YBS) bölümünden yüksek onur derecesi ile mezun oldum. Hem yazılım mimarisi hem de iş süreçleri konusunda güçlü bir temele sahibim.",
+      aboutP2: "Görev kritik sağlık altyapıları olan <strong>Hastane Bilgi Yönetim Sistemleri (HBYS)</strong> geliştirmelerinin yanı sıra, parçalanmış kurumsal ekosistemleri kesintisiz, otomatik süreçlere bağlayan karmaşık, çok taraflı <strong>API entegrasyon platformları</strong> inşa ediyorum.",
+      aboutP3: "Çalışmalarım yazılım mimarisi, süreç otomasyonu ve yapay zekanın kesişim noktasında yer alıyor; operasyonel karmaşıklığı işletmeyle birlikte ölçeklenebilen temiz, sürdürülebilir çözümlere dönüştürüyorum.",
+      techHeading: "Teknoloji Yığını & Araç Kutusu",
+      groupTitleBackend: "Backend & Veritabanı",
+      groupSubBackend: "Sunucu mantığı, veri kalıcılığı ve sorgu optimizasyonu",
+      projEyebrow: "Öne Çıkan Çalışmalar",
+      projHeading: "Hayata Geçen <span class=\"heading-accent\">Projeler</span>",
+      projNoCodeDesc: "Herkesin tek satır kod yazmadan profesyonel web sayfaları oluşturmasına, yayınlamasına ve ölçeklendirmesine olanak tanıyan modern, tam özellikli bir web sitesi oluşturucu ve SaaS platformu. Kullanıcı deneyimi, performans ve ölçeklenebilirlik odaklı geliştirildi.",
+      projAuroxDesc: "İşletmelerin operasyonel süreçlerini dijitalleştirmek ve kolaylaştırmak için tasarlanmış uçtan uca dijital çözümler. Özel yazılım geliştirmeden otomasyon süreçlerine kadar Aurox, iş karmaşıklığı ile zarif, verimli sistemler arasındaki boşluğu doldurur.",
+      projACEDesc: "Sıfır insan müdahalesi ile çalışan tamamen otonom, uçtan uca bir video ve içerik üretim iş akışı. N8n orkestrasyonu ve Üretken Yapay Zeka (GenAI) ile güçlendirilmiştir; kendi programına göre konuları araştırır, metinler yazar, görseller oluşturur, düzenler ve yayınlar.",
+      contactEyebrow: "İletişim",
+      contactHeading: "Harika Bir Şey <span class=\"heading-accent\">İnşa Edelim</span>",
+      contactDesc: "Şu anda yeni projelere ve işbirliklerine açığım. Aklınızda belirli bir fikir varsa veya sadece olasılıkları keşfetmek istiyorsanız, sizden haber almaktan memnuniyet duyarım.",
+      formName: "İsim",
+      formEmail: "E-posta Adresi",
+      formMsg: "Mesajınız",
+      formSubmit: "Mesaj Gönder",
+      footerMade: "<span class=\"footer-heart\" aria-label=\"love\">♥</span> ve temiz kod ile hazırlandı."
+    }
+  };
+
+  const selectors = {
+    navHome: '#nav-home',
+    navAbout: '#nav-about',
+    navProjects: '#nav-projects',
+    navContact: '#nav-contact',
+    heroBadge: '#hero-badge',
+    heroTitle: '#title-text',
+    heroDesc: '.hero-desc',
+    btnProjects: '#hero-cta-primary .btn-text',
+    btnContact: '#hero-cta-secondary .btn-text',
+    aboutEyebrow: '#about-eyebrow .eyebrow-text',
+    aboutP1: '#about-para-1',
+    aboutP2: '#about-para-2',
+    aboutP3: '#about-para-3',
+    techHeading: '#tech-heading',
+    groupTitleBackend: '#group-title-backend',
+    groupSubBackend: '#tech-group-backend .tech-group-sub',
+    projEyebrow: '#projects-eyebrow .eyebrow-text',
+    projHeading: '#projects-heading',
+    projNoCodeDesc: '#proj-nocodepage .pc-desc',
+    projAuroxDesc: '#proj-aurox .pc-desc',
+    projACEDesc: '#proj-ace .pc-desc',
+    contactEyebrow: '#contact-eyebrow .eyebrow-text',
+    contactHeading: '#contact-heading',
+    contactDesc: '#contact-desc',
+    formName: 'label[for="field-name"]',
+    formEmail: 'label[for="field-email"]',
+    formMsg: 'label[for="field-message"]',
+    formSubmit: '#contact-form button[type="submit"] span.btn-text',
+    footerMade: '.footer-made'
+  };
+
+  const btnTr = document.getElementById('lang-tr');
+  const btnEn = document.getElementById('lang-en');
+  if (!btnTr || !btnEn) return;
+
+  const btnToggle = document.getElementById('lang-toggle-btn');
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    localStorage.setItem('pref-lang', lang);
+
+    // Update UI toggle
+    if (lang === 'tr') {
+      btnTr.classList.add('lang-active');
+      btnEn.classList.remove('lang-active');
+    } else {
+      btnEn.classList.add('lang-active');
+      btnTr.classList.remove('lang-active');
+    }
+
+    // Replace text
+    const dict = translations[lang];
+    for (const key in selectors) {
+      const el = document.querySelector(selectors[key]);
+      if (el && dict[key]) {
+        el.innerHTML = dict[key];
+      }
+    }
+  }
+
+  // Listeners
+  if (btnToggle) {
+    btnToggle.addEventListener('click', () => {
+      const current = document.documentElement.lang || 'en';
+      setLanguage(current === 'tr' ? 'en' : 'tr');
+    });
+  }
+
+  // Init
+  const savedLang = localStorage.getItem('pref-lang') || 'en';
+  setLanguage(savedLang);
+})();

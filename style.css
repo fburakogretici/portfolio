@@ -147,6 +147,41 @@ ul { list-style: none; }
   transition: color 0.25s;
 }
 
+.lang-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s var(--ease-smooth);
+  margin-left: 1rem;
+}
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+.lang-option {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.lang-option.lang-active {
+  opacity: 1;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px rgba(61,139,255,0.4);
+}
+.lang-divider {
+  opacity: 0.3;
+  font-weight: 400;
+}
+
 .nav-link::after {
   content: '';
   position: absolute;
@@ -294,29 +329,28 @@ ul { list-style: none; }
 /* Name */
 .hero-name {
   font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 900;
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0.3em;
+  gap: 0.25em;
   animation: fadeSlideUp 0.9s var(--ease-out) 0.15s both;
 }
 .name-line {
   display: inline-block;
   color: var(--text-primary);
 }
-#name-line-1 {
-  font-weight: 300;
-}
 .name-accent {
-  font-weight: 900;
   background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
 }
 
 /* Title */
@@ -1052,7 +1086,9 @@ ul { list-style: none; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 
   /* Smooth multi-property transition */
   transition:

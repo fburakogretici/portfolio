@@ -22,9 +22,14 @@
       <ul class="nav-links" role="list">
         <li><a href="#hero" class="nav-link" id="nav-home">Home</a></li>
         <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
-        <li><a href="#projects" class="nav-link" id="nav-projects">Projects</a></li>
-        <li><a href="#contact" class="nav-link nav-link-cta" id="nav-contact">Contact</a></li>
+        <li><a href="#projects" class="nav-link" id="nav-projects" data-i18n="navProjects">Projects</a></li>
+        <li><a href="#contact" class="nav-link nav-link-cta" id="nav-contact" data-i18n="navContact">Contact</a></li>
       </ul>
+      <button class="lang-toggle" id="lang-toggle-btn" aria-label="Toggle language">
+        <span class="lang-option lang-active" id="lang-tr">TR</span>
+        <span class="lang-divider">|</span>
+        <span class="lang-option" id="lang-en">EN</span>
+      </button>
       <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -374,7 +379,7 @@
       <div class="projects-grid" id="projects-grid" role="list">
 
         <!-- ─── CARD 1: NoCodePage ─────────────────── -->
-        <article class="project-card project-card--featured" id="proj-nocodepage" role="listitem" aria-labelledby="proj-nocodepage-title">
+        <a href="https://nocodepage.tech" target="_blank" rel="noopener noreferrer" class="project-card project-card--featured" id="proj-nocodepage" role="listitem" aria-labelledby="proj-nocodepage-title">
 
           <!-- Top bar -->
           <div class="pc-topbar">
@@ -427,16 +432,16 @@
           </div>
 
           <!-- Hover arrow -->
-          <a href="https://nocodepage.tech" class="pc-cta" target="_blank" rel="noopener noreferrer" aria-label="Open NoCodePage project">
+          <div class="pc-cta" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </div>
 
           <!-- Background grid decoration -->
           <div class="pc-bg-grid" aria-hidden="true"></div>
-        </article>
+        </a>
 
         <!-- ─── CARD 2: Aurox Software ─────────────── -->
-        <article class="project-card" id="proj-aurox" role="listitem" aria-labelledby="proj-aurox-title">
+        <a href="https://aurox.software" target="_blank" rel="noopener noreferrer" class="project-card" id="proj-aurox" role="listitem" aria-labelledby="proj-aurox-title">
 
           <div class="pc-topbar">
             <div class="pc-window-dots" aria-hidden="true">
@@ -484,10 +489,10 @@
           </div>
 
           <div class="pc-bg-grid" aria-hidden="true"></div>
-        </article>
+        </a>
 
         <!-- ─── CARD 3: Autonomous Content Engine ───── -->
-        <article class="project-card" id="proj-ace" role="listitem" aria-labelledby="proj-ace-title">
+        <a href="#" class="project-card" id="proj-ace" role="listitem" aria-labelledby="proj-ace-title">
 
           <div class="pc-topbar">
             <div class="pc-window-dots" aria-hidden="true">
@@ -536,7 +541,7 @@
           </div>
 
           <div class="pc-bg-grid" aria-hidden="true"></div>
-        </article>
+        </a>
 
       </div><!-- /projects-grid -->
 
