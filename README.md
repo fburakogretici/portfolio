@@ -1,4 +1,4 @@
-# Faruk Burak Öğretici - Personal Portfolio
+# Burak Öğretici - Personal Portfolio
 
 A modern, highly professional, and visionary personal portfolio landing page for a Full Stack Developer & Software Specialist. Featuring a sleek dark mode theme, interactive animations, and a fully responsive design.
 
@@ -62,6 +62,6 @@ Since this is a lightweight, high-performance static website, you don't need any
 
 ## 👤 Author
 
-**Faruk Burak Öğretici**
+**Burak Öğretici**
 - GitHub: [@fburakogretici](https://github.com/fburakogretici)
 - LinkedIn: [burakogretici](https://www.linkedin.com/in/burakogretici)

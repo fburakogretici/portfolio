@@ -1,5 +1,5 @@
 /* =============================================
-   PORTFOLIO JS — Faruk Burak Öğretici
+   PORTFOLIO JS — Burak Öğretici
    Canvas grid, navbar scroll, mobile nav
    ============================================= */
 
